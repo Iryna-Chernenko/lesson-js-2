@@ -115,7 +115,7 @@ console.log(evenFn(20));
  */
 
 
-var n = '', Status;
+
 function weekFn(n) {
     
     switch (n) {
@@ -126,7 +126,7 @@ function weekFn(n) {
         case 5: Status = 'Пятница'; break;
         case 6: Status = 'Суббота'; break;
         case 7: Status = 'Воскресенье'; break;
-        default: Status = 'null';
+        default: Status = null;
     }
     return Status;
 }
@@ -144,9 +144,9 @@ console.log(weekFn(4) === 'Четверг');
 console.log(weekFn(5) === 'Пятница');
 console.log(weekFn(6) === 'Суббота');
 console.log(weekFn(7) === 'Воскресенье');
-console.log(weekFn(9) === 'null');
-console.log(weekFn(1.5) === 'null');
-console.log(weekFn('2') === 'null');
+console.log(weekFn(9) === null);
+console.log(weekFn(1.5) === null);
+console.log(weekFn('2') === null);
 
 
 // console.log(weekFn(1)); // 'Понедельник'
@@ -278,11 +278,11 @@ console.log(15, ageClassification(150) === null);
 function oddFn(n) {
     let arr = [];
     let i = 0;
-    while (i++ <= n) if (i % 2 != 0) arr.push(i);
-
+  
+    while (i++ < n) if (i % 2 !== 0) arr.push(i);
+  
     return arr;
-
-}
+  }
 
 console.log(oddFn(10));
 console.log(oddFn(15));
@@ -309,14 +309,21 @@ console.log(oddFn(20));
 
 
 function mainFunc(a, b, func) {
-
+if (func && typeof func === 'function') return func(a,b); 
+return false;
 }
 // cbRandom(a, b) – вычисляет и возвращает произвольное целое число в диапазоне между a и b включительно.
-
+function cbRandom(a, b) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
 // cbPow(a, b) – вычисляет и возвращает результат возведения числа a в степень b.
-
+function cbPow(a, b) {
+    return Math.pow (a, b);
+    }
 // cbAdd(a, b) – вычисляет и возвращает сумму двух чисел a и b.
-
+function cbAdd(a, b) {
+    return a + b;
+    }
 /*
  * mainFunc() должна возвращать результат работы переданной ей возвратной функции, например:
  * mainFunc(2, 5, cbRandom) → случайно от 2 до 5 включительно
